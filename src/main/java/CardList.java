@@ -1,13 +1,19 @@
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Iterator;
 import java.util.List;
 
-public class CardList {
+public class CardList implements Iterable<Card>{
 
   private List<Card> cards;
 
   public CardList() {
     cards = new ArrayList<>();
+  }
+
+  @Override
+  public Iterator<Card> iterator() {
+    return cards.iterator();
   }
 
   public static CardList buildFullDeck() {
