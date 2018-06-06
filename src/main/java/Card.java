@@ -8,6 +8,14 @@ public class Card {
         this.value = value;
     }
 
+    static Suit[] getSuits() {
+      return Suit.values();
+    }
+
+    static Value[] getValues() {
+      return Value.values();
+    }
+
     enum Suit {
         HEARTS("Hearts"),
         DIAMONDS("Diamonds"),

@@ -17,5 +17,6 @@ public class CardListTest {
   public void testBuildFullDeck() {
     CardList fullDeck = CardList.buildFullDeck();
     Assert.assertEquals("Full deck should have 24 cards", DECK_SIZE, fullDeck.size());
+
   }
 }
