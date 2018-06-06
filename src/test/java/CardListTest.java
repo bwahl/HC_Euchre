@@ -3,8 +3,6 @@ import static org.junit.Assert.*;
 
 public class CardListTest {
 
-  public static final int DECK_SIZE = 24;
-
   @Test
   public void testConstructor() {
     CardList cardList = new CardList();

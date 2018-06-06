@@ -5,6 +5,8 @@ import java.util.List;
 
 public class CardList implements Iterable<Card>{
 
+  public static final int DECK_SIZE = 24;
+  public static final int HAND_SIZE = 5;
   private List<Card> cards;
 
   public CardList() {
