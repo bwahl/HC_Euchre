@@ -13,8 +13,7 @@ public class CardList {
     CardList fullDeck = new CardList();
     for (Card.Suit suit : Card.getSuits()) {
       for (Card.Value value : Card.getValues()) {
-        Card card = new Card(suit, value);
-        fullDeck.addCard(card);
+        fullDeck.addCard(new Card(suit, value));
       }
     }
     return fullDeck;
