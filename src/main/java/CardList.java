@@ -49,4 +49,17 @@ public class CardList implements Iterable<Card>{
   public boolean contains(Card card) {
     return cards.contains(card);
   }
+  // Throws IndexOutOfBoundsException if this CardList is empty.
+
+  Card drawCard() {
+    return cards.remove(0);
+  }
+
+  CardList dealHand() {
+    CardList hand = new CardList();
+    for (int i = 0; i < HAND_SIZE; i++) {
+      hand.addCard(this.drawCard());
+    }
+    return hand;
+  }
 }
