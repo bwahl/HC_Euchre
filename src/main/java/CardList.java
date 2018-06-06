@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class CardList {
@@ -10,6 +11,12 @@ public class CardList {
   }
 
   public static CardList buildFullDeck() {
+    CardList fullDeck = getOrderedDeck();
+    Collections.shuffle(fullDeck.cards);
+    return fullDeck;
+  }
+
+  private static CardList getOrderedDeck() {
     CardList fullDeck = new CardList();
     for (Card.Suit suit : Card.getSuits()) {
       for (Card.Value value : Card.getValues()) {
