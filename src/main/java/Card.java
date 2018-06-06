@@ -12,9 +12,26 @@ public class Card {
       return Suit.values();
     }
 
-    static Value[] getValues() {
-      return Value.values();
+  @Override
+  public boolean equals(Object obj) {
+    if (obj == null) {
+      return false;
     }
+    Card other = (Card)obj;
+    return hasSameSuit(other) && hasSameValue(other);
+  }
+
+  private boolean hasSameValue(Card other) {
+    return this.value.equals(other.value);
+  }
+
+  private boolean hasSameSuit(Card other) {
+    return this.suit.equals(other.suit);
+  }
+
+  static Value[] getValues() {
+    return Value.values();
+  }
 
     enum Suit {
         HEARTS("Hearts"),
