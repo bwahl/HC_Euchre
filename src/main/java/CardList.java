@@ -10,7 +10,6 @@ public class CardList {
   }
 
   public static CardList buildFullDeck() {
-
     CardList fullDeck = new CardList();
     for (Card.Suit suit : Card.getSuits()) {
       for (Card.Value value : Card.getValues()) {
@@ -31,5 +30,9 @@ public class CardList {
 
   public int size() {
     return cards.size();
+  }
+
+  public boolean contains(Card card) {
+    return cards.contains(card);
   }
 }
