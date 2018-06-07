@@ -13,6 +13,11 @@ public class Card {
   }
 
   @Override
+  public String toString() {
+    return value.getName() + " of " + suit.getName();
+  }
+
+  @Override
   public boolean equals(Object obj) {
     if (obj == null) {
       return false;
