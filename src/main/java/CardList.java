@@ -62,4 +62,18 @@ public class CardList implements Iterable<Card>{
     }
     return hand;
   }
+
+  @Override
+  public String toString() {
+    if (this.isEmpty()){
+      return "<empty>\n";
+    }
+
+    StringBuilder sb = new StringBuilder();
+    for (Card card : cards) {
+      sb.append(card.toString());
+      sb.append("\n");
+    }
+    return sb.toString();
+  }
 }

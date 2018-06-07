@@ -51,4 +51,23 @@ public class CardListTest {
       assertFalse("Hand should contain no duplicates", hand.contains(card));
     }
   }
+
+  @Test
+  public void testToString() {
+    CardList emptyList = new CardList();
+    assertEquals("Empty CardList should print as '<empty>'", "<empty>\n",
+            emptyList.toString());
+    CardList hand = getRandomHand();
+    String s = hand.toString();
+    for (Card card : hand) {
+      assertTrue("Each card's toString should be included in CardList's toString.",
+              s.contains(card.toString()));
+    }
+  }
+
+  private CardList getRandomHand() {
+    CardList fullDeck = CardList.buildFullDeck();
+    CardList hand = fullDeck.dealHand();
+    return hand;
+  }
 }
