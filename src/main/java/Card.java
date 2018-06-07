@@ -39,14 +39,14 @@ public class Card {
     CLUBS("Clubs"),
     SPADES("Spades");
 
-    private final String suit;
+    private final String name;
 
     Suit(String suit) {
-      this.suit = suit;
+      this.name = suit;
     }
 
-    public String getSuit() {
-      return suit;
+    public String getName() {
+      return name;
     }
   }
 
@@ -58,14 +58,14 @@ public class Card {
     KING("K"),
     ACE("A");
 
-    private final String value;
+    private final String name;
 
     Value(String value) {
-      this.value = value;
+      this.name = value;
     }
 
-    public String getValue() {
-      return value;
+    public String getName() {
+      return name;
     }
   }
 }
