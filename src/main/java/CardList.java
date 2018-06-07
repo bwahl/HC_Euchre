@@ -18,13 +18,13 @@ public class CardList implements Iterable<Card>{
     return cards.iterator();
   }
 
-  public static CardList buildFullDeck() {
-    CardList fullDeck = getOrderedDeck();
+  public static CardList createShuffledDeck() {
+    CardList fullDeck = createOrderedDeck();
     Collections.shuffle(fullDeck.cards);
     return fullDeck;
   }
 
-  private static CardList getOrderedDeck() {
+  private static CardList createOrderedDeck() {
     CardList fullDeck = new CardList();
     for (Card.Suit suit : Card.getSuits()) {
       for (Card.Value value : Card.getValues()) {
