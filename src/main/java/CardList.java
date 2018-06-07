@@ -34,7 +34,7 @@ public class CardList implements Iterable<Card>{
     return fullDeck;
   }
 
-  private void addCard(Card card) {
+  void addCard(Card card) {
     cards.add(card);
   }
 
