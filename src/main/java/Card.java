@@ -58,10 +58,10 @@ public class Card {
   enum Value {
     NINE("9"),
     TEN("10"),
-    JACK("J"),
-    QUEEN("Q"),
-    KING("K"),
-    ACE("A");
+    JACK("Jack"),
+    QUEEN("Queen"),
+    KING("King"),
+    ACE("Ace");
 
     private final String name;
 
