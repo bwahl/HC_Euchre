@@ -1,7 +1,7 @@
 import org.junit.Test;
 import static org.junit.Assert.*;
 
-public class CardListTest {
+public class CardListTest extends EuchreTest {
 
   @Test
   public void testConstructor() {
@@ -65,9 +65,4 @@ public class CardListTest {
     }
   }
 
-  private CardList getRandomHand() {
-    CardList fullDeck = CardList.createShuffledDeck();
-    CardList hand = fullDeck.dealHand();
-    return hand;
-  }
 }
