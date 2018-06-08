@@ -12,4 +12,8 @@ public class EuchreTest {
     }
     return copy;
   }
+
+  protected Player makeTestPlayer() {
+    return new AutoPlayer();
+  }
 }
