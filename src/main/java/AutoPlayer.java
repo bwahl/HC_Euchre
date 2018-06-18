@@ -1,6 +1,6 @@
 public class AutoPlayer extends Player {
   @Override
-  Card playCard() {
+  Card playCard(Trick trick) {
     return this.getHand().drawCard();
   }
 }

@@ -23,7 +23,7 @@ public class PlayerTest extends EuchreTest {
     CardList hand = getRandomHand();
     CardList handcopy = cloneHand(hand);
     player.setHand(hand);
-    Card playedcard = player.playCard();
+    Card playedcard = player.playCard(getRandomTrick());
     assertTrue("Played card was in original hand", handcopy.contains(playedcard));
     assertFalse("Played card is no longer in hand", hand.contains(playedcard));
   }

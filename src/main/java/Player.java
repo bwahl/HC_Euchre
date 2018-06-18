@@ -9,5 +9,5 @@ public abstract class Player {
     this.hand = hand;
   }
 
-  abstract Card playCard();
+  abstract Card playCard(Trick trick);
 }

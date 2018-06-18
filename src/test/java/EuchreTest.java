@@ -16,4 +16,8 @@ public class EuchreTest {
   protected Player makeTestPlayer() {
     return new AutoPlayer();
   }
+
+  protected Trick getRandomTrick() {
+    return new Trick(Card.Suit.HEARTS);
+  }
 }

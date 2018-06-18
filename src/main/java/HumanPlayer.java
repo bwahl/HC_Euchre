@@ -1,6 +1,6 @@
 public class HumanPlayer extends Player {
   @Override
-  Card playCard() {
+  Card playCard(Trick trick) {
     return this.getHand().drawCard();
   }
 }
