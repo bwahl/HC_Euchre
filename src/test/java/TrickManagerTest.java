@@ -3,7 +3,6 @@ import org.junit.Test;
 import static org.junit.Assert.*;
 
 public class TrickManagerTest extends EuchreTest {
-
   private Player leader;
   private Player player2;
   private Player player3;
@@ -14,11 +13,12 @@ public class TrickManagerTest extends EuchreTest {
 
   @Before
   public void setUp() throws Exception {
-    leader = makeTestPlayer();
-    player2 = makeTestPlayer();
-    player3 = makeTestPlayer();
-    player4 = makeTestPlayer();
+    leader = makeStubPlayer();
+    player2 = makeStubPlayer();
+    player3 = makeStubPlayer();
+    player4 = makeStubPlayer();
     playerOrder = new PlayerOrder(leader, player2, player3, player4);
+    dealHands(playerOrder, leader);
     trump = Card.Suit.HEARTS;
     trickman = new TrickManager(playerOrder, leader, trump);
   }

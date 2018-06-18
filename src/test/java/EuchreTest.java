@@ -13,11 +13,27 @@ public class EuchreTest {
     return copy;
   }
 
-  protected Player makeTestPlayer() {
-    return new AutoPlayer();
+  protected Player makeStubPlayer() {
+    return new StubPlayer();
   }
 
   protected Trick getRandomTrick() {
     return new Trick(Card.Suit.HEARTS);
+  }
+
+  protected void dealHands(PlayerOrder playerOrder, Player leader) {
+    CardList fullDeck = CardList.createShuffledDeck();
+    Player currPlayer = leader;
+    for (int i = 0; i < 4; i++) {
+      currPlayer.setHand(fullDeck.dealHand());
+      currPlayer = playerOrder.nextPlayer(currPlayer);
+    }
+  }
+
+  public static class StubPlayer extends Player {
+    @Override
+    Card playCard(Trick trick) {
+      return null;
+    }
   }
 }
