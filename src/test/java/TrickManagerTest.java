@@ -26,6 +26,6 @@ public class TrickManagerTest extends EuchreTest {
   @Test
   public void testGetTrickCards() {
     assertTrue("Card list should start out empty",
-            trickman.getTrickCards().isEmpty());
+            trickman.getPlayedCards().isEmpty());
   }
 }

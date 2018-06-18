@@ -3,22 +3,22 @@ public class TrickManager {
   private final PlayerOrder playerOrder;
   private final Player leadPlayer;
   private final Card.Suit trump;
-  private CardList trickCards;
-  private Player winPlayer;
+  private CardList playedCards;
+  private Player winningPlayer;
 
   public TrickManager(PlayerOrder playerOrder, Player leadPlayer, Card.Suit trump) {
     this.playerOrder = playerOrder;
     this.leadPlayer = leadPlayer;
     this.trump = trump;
-    this.trickCards = new CardList();
-    this.winPlayer = null;
+    this.playedCards = new CardList();
+    this.winningPlayer = null;
   }
 
-  public CardList getTrickCards() {
-    return trickCards;
+  public CardList getPlayedCards() {
+    return playedCards;
   }
 
-  public Player getWinPlayer() {
-    return winPlayer;
+  public Player getWinningPlayer() {
+    return winningPlayer;
   }
 }
