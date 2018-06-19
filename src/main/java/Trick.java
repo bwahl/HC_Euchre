@@ -6,5 +6,4 @@ public class Trick {
     this.trump = trump;
     playedCards = new CardList();
   }
-
 }

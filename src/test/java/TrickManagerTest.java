@@ -23,7 +23,7 @@ public class TrickManagerTest extends EuchreTest {
   public void testPlayedCardsAfterOneCardHand() {
     Card.Suit trump = Card.Suit.HEARTS;
     Player leadPlayer = playerOrder.getPlayerAt(0);
-    Card[] providedCards = makeCardArray();
+    Card[] providedCards = makeTensCardArray();
     playerOrder.assignCardsToPlayers(providedCards);
     TrickManager trickman = new TrickManager(playerOrder, leadPlayer, trump);
     trickman.playTrick();
@@ -42,7 +42,18 @@ public class TrickManagerTest extends EuchreTest {
     }
   }
 
-  private Card[] makeCardArray() {
+  @Test
+  public void testWinningPlayerDifferentSuitsAllTens() {
+    Card.Suit trump = Card.Suit.HEARTS;
+    Player leadPlayer = playerOrder.getPlayerAt(0);
+    Card[] providedCards = makeTensCardArray();
+    playerOrder.assignCardsToPlayers(providedCards);
+    TrickManager trickman = new TrickManager(playerOrder, leadPlayer, trump);
+    trickman.playTrick();
+    assertEquals("Lead player wins because they played trump", leadPlayer, trickman.getWinningPlayer());
+  }
+
+  private Card[] makeTensCardArray() {
     Card[] cardArray = new Card[4];
     cardArray[0] = new Card(Card.Suit.HEARTS, Card.Value.TEN);
     cardArray[1] = new Card(Card.Suit.CLUBS, Card.Value.TEN);
