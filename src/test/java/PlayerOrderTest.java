@@ -13,10 +13,10 @@ public class PlayerOrderTest extends EuchreTest {
 
   @Before
   public void setUp() throws Exception {
-    player1 = makeTestPlayer();
-    player2 = makeTestPlayer();
-    player3 = makeTestPlayer();
-    player4 = makeTestPlayer();
+    player1 = makeStubPlayer();
+    player2 = makeStubPlayer();
+    player3 = makeStubPlayer();
+    player4 = makeStubPlayer();
     playerOrder = new PlayerOrder(player1, player2, player3, player4);
   }
 
