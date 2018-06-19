@@ -13,10 +13,6 @@ public class EuchreTest {
     return copy;
   }
 
-  protected Player makeStubPlayer() {
-    return new StubPlayer();
-  }
-
   protected Trick getRandomTrick() {
     return new Trick(Card.Suit.HEARTS);
   }
@@ -30,10 +26,30 @@ public class EuchreTest {
     }
   }
 
+  protected Player makeStubPlayer() {
+    return new StubPlayer();
+  }
+
   public static class StubPlayer extends Player {
     @Override
     Card playCard(Trick trick) {
       return null;
     }
+  }
+
+  protected StubPlayerOrder makeStubPlayerOrder() {
+    return new StubPlayerOrder(makeStubPlayer(), makeStubPlayer(), makeStubPlayer(), makeStubPlayer());
+  }
+
+  public static class StubPlayerOrder extends PlayerOrder {
+
+    public StubPlayerOrder(Player p0, Player p1, Player p2, Player p3) {
+      super(p0, p1, p2, p3);
+    }
+
+    public Player getPlayerAt(int i) {
+      return players[i];
+    }
+
   }
 }
