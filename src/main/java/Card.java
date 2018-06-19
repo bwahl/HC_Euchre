@@ -24,6 +24,18 @@ public class Card {
     return value;
   }
 
+  public boolean hasSameValue(Card other) {
+    return this.value.equals(other.value);
+  }
+
+  public boolean hasSameSuit(Card other) {
+    return this.suit.equals(other.suit);
+  }
+
+  public boolean hasHigherValue(Card other) {
+    return (this.value.compareTo(other.value) > 0);
+  }
+
   @Override
   public String toString() {
     return value.getName() + " of " + suit.getName();
@@ -37,15 +49,6 @@ public class Card {
     Card other = (Card)obj;
     return hasSameSuit(other) && hasSameValue(other);
   }
-
-  private boolean hasSameValue(Card other) {
-    return this.value.equals(other.value);
-  }
-
-  private boolean hasSameSuit(Card other) {
-    return this.suit.equals(other.suit);
-  }
-
 
   enum Suit {
     HEARTS("Hearts"),
