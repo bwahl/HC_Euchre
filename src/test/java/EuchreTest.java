@@ -31,9 +31,14 @@ public class EuchreTest {
   }
 
   public static class StubPlayer extends Player {
+    public StubPlayer() {
+      super();
+      setHand(new CardList());
+    }
+
     @Override
     Card playCard(Trick trick) {
-      return null;
+      return this.getHand().drawCard();
     }
   }
 

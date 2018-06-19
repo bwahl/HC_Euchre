@@ -20,7 +20,16 @@ public class TrickManager {
     return winningPlayer;
   }
 
-
   public void playTrick() {
+    Player currentPlayer = leadPlayer;
+    do {
+      makePlayerPlayCard(currentPlayer);
+      currentPlayer = playerOrder.nextPlayer(currentPlayer);
+    } while (!currentPlayer.equals(leadPlayer));
+  }
+
+  private void makePlayerPlayCard(Player currentPlayer) {
+    Card card = currentPlayer.playCard(trick);
+    trick.playedCards.addCard(card);
   }
 }
