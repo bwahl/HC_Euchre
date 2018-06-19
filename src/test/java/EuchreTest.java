@@ -51,5 +51,10 @@ public class EuchreTest {
       return players[i];
     }
 
+    public void assignCardsToPlayers(Card[] cardArray) {
+      for (int i = 0; i < 4; i++) {
+        players[i].getHand().addCard(cardArray[i]);
+      }
+    }
   }
 }

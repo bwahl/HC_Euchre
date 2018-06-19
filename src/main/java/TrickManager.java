@@ -21,4 +21,6 @@ public class TrickManager {
   }
 
 
+  public void playTrick() {
+  }
 }
