@@ -12,6 +12,18 @@ public class Card {
     return Suit.values();
   }
 
+  static Value[] getValues() {
+    return Value.values();
+  }
+
+  public Suit getSuit() {
+    return suit;
+  }
+
+  public Value getValue() {
+    return value;
+  }
+
   @Override
   public String toString() {
     return value.getName() + " of " + suit.getName();
@@ -34,9 +46,6 @@ public class Card {
     return this.suit.equals(other.suit);
   }
 
-  static Value[] getValues() {
-    return Value.values();
-  }
 
   enum Suit {
     HEARTS("Hearts"),
