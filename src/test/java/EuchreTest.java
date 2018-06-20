@@ -1,4 +1,26 @@
 public class EuchreTest {
+
+  public static final Card[] TENS_CARD_ARRAY = {
+          new Card(Card.Suit.HEARTS, Card.Value.TEN),
+          new Card(Card.Suit.CLUBS, Card.Value.TEN),
+          new Card(Card.Suit.DIAMONDS, Card.Value.TEN),
+          new Card(Card.Suit.SPADES, Card.Value.TEN)
+  };
+
+  public static final Card[] HEARTS_CARD_ARRAY = {
+          new Card(Card.Suit.HEARTS, Card.Value.TEN),
+          new Card(Card.Suit.HEARTS, Card.Value.NINE),
+          new Card(Card.Suit.HEARTS, Card.Value.ACE),
+          new Card(Card.Suit.HEARTS, Card.Value.QUEEN)
+  };
+
+  public static final Card[] BLACK_CARD_ARRAY = {
+          new Card(Card.Suit.SPADES, Card.Value.NINE),
+          new Card(Card.Suit.CLUBS, Card.Value.ACE),
+          new Card(Card.Suit.CLUBS, Card.Value.KING),
+          new Card(Card.Suit.CLUBS, Card.Value.TEN)
+  };
+
   protected CardList getRandomHand() {
     CardList fullDeck = CardList.createShuffledDeck();
     CardList hand = fullDeck.dealHand();
