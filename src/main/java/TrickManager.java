@@ -1,5 +1,3 @@
-import java.util.Iterator;
-
 public class TrickManager {
 
   private final PlayerOrder playerOrder;
@@ -15,7 +13,7 @@ public class TrickManager {
   }
 
   public CardList getPlayedCards() {
-    return trick.playedCards;
+    return trick.getPlayedCardsAsCardList();
   }
 
   public Player getWinningPlayer() {
@@ -36,23 +34,26 @@ public class TrickManager {
   }
 
   private void computeTrickWinner() {
-    Player currentPlayer = leadPlayer;
-    Iterator<Card> iter = trick.playedCards.iterator();
-    Card leadCard = iter.next();
-    Card winningCard = leadCard;
-    winningPlayer = leadPlayer;
-
-    while (iter.hasNext()) {
-      currentPlayer = playerOrder.nextPlayer(currentPlayer);
-      Card currentCard = iter.next();
-      if (challengerBeatsIncumbent(currentCard, winningCard, trick.trump)) {
-        winningCard = currentCard;
-        winningPlayer = currentPlayer;
-      }
-    }
+    PlayedCard winningCard = computeWinningCard();
+    this.winningPlayer = winningCard.player;
   }
 
-  private boolean challengerBeatsIncumbent(Card challenger, Card incumbent, Card.Suit trump) {
+  private PlayedCard computeWinningCard() {
+    PlayedCard winningPlayedCard = null;
+    for (PlayedCard card : trick.playedCards) {
+      if (challengerBeatsIncumbent(card, winningPlayedCard, trick.trump)) {
+        winningPlayedCard = card;
+      }
+    }
+    return winningPlayedCard;
+  }
+
+  private boolean challengerBeatsIncumbent(PlayedCard challenger,
+                 PlayedCard incumbent, Card.Suit trump) {
+    if (incumbent == null) {
+      return true;
+    }
+
     if (challenger.hasSameSuit(incumbent)) {
       return challenger.hasHigherValue(incumbent);
     }
@@ -62,6 +63,7 @@ public class TrickManager {
 
   private void makePlayerPlayCard(Player currentPlayer) {
     Card card = currentPlayer.playCard(trick);
-    trick.playedCards.addCard(card);
+    trick.addPlayedCard(card, currentPlayer);
   }
+
 }
