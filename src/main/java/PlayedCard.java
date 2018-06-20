@@ -12,6 +12,14 @@ public class PlayedCard {
     return card.getSuit();
   }
 
+  public boolean hasSameSuit(PlayedCard other) {
+    return card.hasSameSuit(other.card);
+  }
+
+  boolean hasSuit(Card.Suit suit) {
+    return getSuit().equals(suit);
+  }
+
   public Card.Value getValue() {
     return card.getValue();
   }
@@ -20,11 +28,8 @@ public class PlayedCard {
     return card.hasSameValue(other.card);
   }
 
-  public boolean hasSameSuit(PlayedCard other) {
-    return card.hasSameSuit(other.card);
-  }
-
   public boolean hasHigherValue(PlayedCard other) {
     return card.hasHigherValue(other.card);
   }
+
 }

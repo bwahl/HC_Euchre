@@ -58,7 +58,7 @@ public class TrickManager {
       return challenger.hasHigherValue(incumbent);
     }
 
-    return challenger.getSuit().equals(trump);
+    return challenger.hasSuit(trump);
   }
 
   private void makePlayerPlayCard(Player currentPlayer) {
