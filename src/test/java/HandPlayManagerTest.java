@@ -11,12 +11,10 @@ public class HandPlayManagerTest extends EuchreTest {
   @Before
   public void setUp() throws Exception {
     StubPlayerOrder playerOrder = makeStubPlayerOrder();
-    Player leader = playerOrder.getPlayerAt(0);
-    players = new PlayerOrderWithLeader(playerOrder, leader);
+    players = getPlayersWithLeader(playerOrder, 0);
     Card.Suit trump = Card.Suit.HEARTS;
     handPlayManager = new HandPlayManager(players, trump);
   }
-
 
   @Test
   public void testHandPlayStartsWithTricksWonAllZero() {

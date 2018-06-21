@@ -13,8 +13,8 @@ public class TrickManagerTest extends EuchreTest {
   @Test
   public void testPlayedCardsEmptyAtStart() {
     Card.Suit trump = Card.Suit.HEARTS;
-    Player leadPlayer = playerOrder.getPlayerAt(0);
-    TrickManager trickman = new TrickManager(playerOrder, leadPlayer, trump);
+    PlayerOrderWithLeader players = getPlayersWithLeader(playerOrder, 0);
+    TrickManager trickman = new TrickManager(players, trump);
     assertTrue("Card list should start out empty",
             trickman.getPlayedCards().isEmpty());
   }
@@ -22,10 +22,10 @@ public class TrickManagerTest extends EuchreTest {
   @Test
   public void testPlayedCardsAfterOneCardHand() {
     Card.Suit trump = Card.Suit.HEARTS;
-    Player leadPlayer = playerOrder.getPlayerAt(0);
     Card[] providedCards = TENS_CARD_ARRAY;
     playerOrder.assignCardsToPlayers(providedCards);
-    TrickManager trickman = new TrickManager(playerOrder, leadPlayer, trump);
+    PlayerOrderWithLeader players = getPlayersWithLeader(playerOrder, 0);
+    TrickManager trickman = new TrickManager(players, trump);
     trickman.playTrick();
     assertPlayedCardsMatchesProvidedCards(trickman.getPlayedCards(), providedCards);
 

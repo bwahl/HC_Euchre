@@ -73,7 +73,7 @@ public class TrickWinningLogicTest extends EuchreTest {
                                       Player winningPlayer,
                                       Card[] providedCards) {
     playerOrder.assignCardsToPlayers(providedCards);
-    TrickManager trickman = new TrickManager(playerOrder, leadPlayer, trump);
+    TrickManager trickman = new TrickManager(new PlayerOrderWithLeader(playerOrder, leadPlayer), trump);
     trickman.playTrick();
     assertEquals(message,
             winningPlayer, trickman.getWinningPlayer());

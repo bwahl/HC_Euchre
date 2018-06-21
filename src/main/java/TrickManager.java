@@ -1,13 +1,11 @@
 public class TrickManager {
 
-  private final PlayerOrder playerOrder;
-  private final Player leadPlayer;
   private final Trick trick;
+  private final PlayerOrderWithLeader players;
   private Player winningPlayer;
 
-  public TrickManager(PlayerOrder playerOrder, Player leadPlayer, Card.Suit trump) {
-    this.playerOrder = playerOrder;
-    this.leadPlayer = leadPlayer;
+  public TrickManager(PlayerOrderWithLeader players, Card.Suit trump) {
+    this.players = players;
     trick = new Trick(trump);
     this.winningPlayer = null;
   }
@@ -26,11 +24,9 @@ public class TrickManager {
   }
 
   private void playCards() {
-    Player currentPlayer = leadPlayer;
-    do {
-      makePlayerPlayCard(currentPlayer);
-      currentPlayer = playerOrder.nextPlayer(currentPlayer);
-    } while (!currentPlayer.equals(leadPlayer));
+    for (Player player : players) {
+      makePlayerPlayCard(player);
+    }
   }
 
   private void computeTrickWinner() {
