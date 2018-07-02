@@ -52,8 +52,8 @@ public class EuchreTest {
     return new StubPlayer();
   }
 
-  protected PlayerOrderWithLeader getPlayersWithLeader(StubPlayerOrder playerOrder, int i) {
-    Player leadPlayer = playerOrder.getPlayerAt(i);
+  protected PlayerOrderWithLeader getPlayersWithLeader(StubPlayerOrder playerOrder, int leaderIndex) {
+    Player leadPlayer = playerOrder.getPlayerAt(leaderIndex);
     return new PlayerOrderWithLeader(playerOrder, leadPlayer);
   }
 
