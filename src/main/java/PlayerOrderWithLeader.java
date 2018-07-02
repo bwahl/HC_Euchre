@@ -19,34 +19,7 @@ class PlayerOrderWithLeader implements Iterable<Player> {
 
   @Override
   public Iterator<Player> iterator() {
-    return new PlayerOrderIterator(playerOrder, leader);
+    return playerOrder.createIterator(leader);
   }
 
-  private class PlayerOrderIterator implements Iterator<Player> {
-
-    private final PlayerOrder order;
-    private final Player start;
-    private Player current;
-
-    public PlayerOrderIterator(PlayerOrder order, Player start) {
-      this.order = order;
-      this.start = start;
-      this.current = null;
-    }
-
-    @Override
-    public boolean hasNext() {
-      if (current == null) {
-        current = start;
-        return true;
-      }
-      current = order.nextPlayer(current);
-      return (current != start);
-    }
-
-    @Override
-    public Player next() {
-      return current;
-    }
-  }
 }
