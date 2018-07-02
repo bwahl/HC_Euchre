@@ -13,6 +13,20 @@ public class CardList implements Iterable<Card>{
     cards = new ArrayList<>();
   }
 
+  public CardList(Card[] cardArray) {
+    this();  // Calls default constructor
+    for (int i = 0; i < cardArray.length; i++) {
+      addCard(cardArray[i]);
+    }
+  }
+
+  public CardList(Iterable<Card> listOfCards) {
+    this();  // Calls default constructor
+    for (Card card : listOfCards) {
+      addCard(card);
+    }
+  }
+
   @Override
   public Iterator<Card> iterator() {
     return cards.iterator();
@@ -24,7 +38,11 @@ public class CardList implements Iterable<Card>{
     return fullDeck;
   }
 
-  private static CardList createOrderedDeck() {
+  protected CardList clone() {
+    return new CardList(this.cards);
+  }
+
+  static CardList createOrderedDeck() {
     CardList fullDeck = new CardList();
     for (Card.Suit suit : Card.getSuits()) {
       for (Card.Value value : Card.getValues()) {
