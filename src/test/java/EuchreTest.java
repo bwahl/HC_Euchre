@@ -73,6 +73,11 @@ public class EuchreTest {
     return new StubPlayerOrder(makeStubPlayer(), makeStubPlayer(), makeStubPlayer(), makeStubPlayer());
   }
 
+  protected PlayerOrderWithLeader makeStubPlayerOrderWithLeader() {
+    StubPlayerOrder playerOrder = makeStubPlayerOrder();
+    return getPlayersWithLeader(playerOrder, 0);
+  }
+
   public static class StubPlayerOrder extends PlayerOrder {
 
     public StubPlayerOrder(Player p0, Player p1, Player p2, Player p3) {
