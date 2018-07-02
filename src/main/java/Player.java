@@ -10,4 +10,8 @@ public abstract class Player {
   }
 
   abstract Card playCard(Trick trick);
+
+  PlayedCard getPlayedCard(Trick trick) {
+    return new PlayedCard(playCard(trick), this);
+  }
 }

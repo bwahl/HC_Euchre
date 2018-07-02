@@ -58,8 +58,8 @@ public class TrickManager {
   }
 
   private void makePlayerPlayCard(Player currentPlayer) {
-    Card card = currentPlayer.playCard(trick);
-    trick.addPlayedCard(card, currentPlayer);
+    PlayedCard playedCard = currentPlayer.getPlayedCard(trick);
+    trick.addPlayedCard(playedCard);
   }
 
 }

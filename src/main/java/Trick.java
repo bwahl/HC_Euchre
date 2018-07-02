@@ -18,8 +18,8 @@ public class Trick {
     return cards;
   }
 
-  void addPlayedCard(Card card, Player player) {
-    playedCards.add(new PlayedCard(card, player));
+  void addPlayedCard(PlayedCard playedCard) {
+    playedCards.add(playedCard);
   }
 
 }
