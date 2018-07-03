@@ -1,3 +1,5 @@
+import java.util.Collections;
+
 public class EuchreTest {
 
   public static final Card[] TENS_CARD_ARRAY = {
@@ -21,8 +23,16 @@ public class EuchreTest {
           new Card(Card.Suit.CLUBS, Card.Value.TEN)
   };
 
+  public static CardList createShuffledDeck() {
+    return (new ShuffledDeckFactory(new StandardDeckFactory())).createDeck();
+  }
+
+  static CardList createOrderedDeck() {
+    return (new StandardDeckFactory()).createDeck();
+  }
+
   protected CardList getRandomHand() {
-    CardList fullDeck = CardList.createShuffledDeck();
+    CardList fullDeck = createShuffledDeck();
     CardList hand = fullDeck.dealHand();
     return hand;
   }
@@ -40,7 +50,7 @@ public class EuchreTest {
   }
 
   protected void dealHands(PlayerOrder playerOrder, Player leader) {
-    CardList fullDeck = CardList.createShuffledDeck();
+    CardList fullDeck = createShuffledDeck();
     Player currPlayer = leader;
     for (int i = 0; i < 4; i++) {
       currPlayer.setHand(fullDeck.dealHand());

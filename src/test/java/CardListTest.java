@@ -11,7 +11,7 @@ public class CardListTest extends EuchreTest {
 
   @Test
   public void testBuildFullDeck() {
-    CardList fullDeck = CardList.createShuffledDeck();
+    CardList fullDeck = EuchreTest.createShuffledDeck();
     assertEquals("Full deck should have 24 cards", CardList.DECK_SIZE, fullDeck.size());
     for (Card.Suit suit : Card.getSuits()) {
       for (Card.Value value : Card.getValues()) {
@@ -24,7 +24,7 @@ public class CardListTest extends EuchreTest {
 
   @Test
   public void testDrawCard() {
-    CardList fullDeck = CardList.createShuffledDeck();
+    CardList fullDeck = EuchreTest.createShuffledDeck();
     int origSize = fullDeck.size();
     Card card = fullDeck.drawCard();
     assertNotNull("Drawn card should not be null", card);
@@ -34,7 +34,7 @@ public class CardListTest extends EuchreTest {
 
   @Test
   public void testDealHand() {
-    CardList fullDeck = CardList.createShuffledDeck();
+    CardList fullDeck = EuchreTest.createShuffledDeck();
     int origSize = fullDeck.size();
     CardList hand = fullDeck.dealHand();
     assertNotNull("Dealt hand should not be null", hand);

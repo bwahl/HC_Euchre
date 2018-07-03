@@ -72,24 +72,8 @@ public class CardList extends AbstractList<Card> {
     return cards.contains(card);
   }
 
-  public static CardList createShuffledDeck() {
-    CardList fullDeck = createOrderedDeck();
-    Collections.shuffle(fullDeck.cards);
-    return fullDeck;
-  }
-
   protected CardList clone() {
     return new CardList(this.cards);
-  }
-
-  static CardList createOrderedDeck() {
-    CardList fullDeck = new CardList();
-    for (Card.Suit suit : Card.getSuits()) {
-      for (Card.Value value : Card.getValues()) {
-        fullDeck.addCard(new Card(suit, value));
-      }
-    }
-    return fullDeck;
   }
 
   void addCard(Card card) {
