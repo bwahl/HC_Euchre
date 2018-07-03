@@ -1,9 +1,6 @@
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Iterator;
-import java.util.List;
+import java.util.*;
 
-public class CardList implements Iterable<Card>{
+public class CardList extends AbstractList<Card> {
 
   public static final int DECK_SIZE = 24;
   public static final int HAND_SIZE = 5;
@@ -11,6 +8,31 @@ public class CardList implements Iterable<Card>{
 
   public CardList() {
     cards = new ArrayList<>();
+  }
+
+  @ Override
+  public int size() {
+    return cards.size();
+  }
+
+  @Override
+  public Card set(int index, Card element) {
+    return cards.set(index, element);
+  }
+
+  @Override
+  public void add(int index, Card element) {
+    cards.add(index, element);
+  }
+
+  @Override
+  public Card remove(int index) {
+    return cards.remove(index);
+  }
+
+  @Override
+  public Card get(int index) {
+    return cards.get(index);
   }
 
   public CardList(Card[] cardArray) {
@@ -30,6 +52,24 @@ public class CardList implements Iterable<Card>{
   @Override
   public Iterator<Card> iterator() {
     return cards.iterator();
+  }
+
+  @Override
+  public String toString() {
+    if (this.isEmpty()){
+      return "<empty>\n";
+    }
+
+    StringBuilder sb = new StringBuilder();
+    for (Card card : cards) {
+      sb.append(card.toString());
+      sb.append("\n");
+    }
+    return sb.toString();
+  }
+
+  public boolean contains(Card card) {
+    return cards.contains(card);
   }
 
   public static CardList createShuffledDeck() {
@@ -60,15 +100,7 @@ public class CardList implements Iterable<Card>{
     return cards.isEmpty();
   }
 
-  public int size() {
-    return cards.size();
-  }
-
-  public boolean contains(Card card) {
-    return cards.contains(card);
-  }
   // Throws IndexOutOfBoundsException if this CardList is empty.
-
   Card drawCard() {
     return cards.remove(0);
   }
@@ -79,19 +111,5 @@ public class CardList implements Iterable<Card>{
       hand.addCard(this.drawCard());
     }
     return hand;
-  }
-
-  @Override
-  public String toString() {
-    if (this.isEmpty()){
-      return "<empty>\n";
-    }
-
-    StringBuilder sb = new StringBuilder();
-    for (Card card : cards) {
-      sb.append(card.toString());
-      sb.append("\n");
-    }
-    return sb.toString();
   }
 }
