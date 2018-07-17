@@ -13,7 +13,7 @@ public class HandPlayManagerTest extends EuchreTest {
     StubPlayerOrder playerOrder = makeStubPlayerOrder();
     players = getPlayersWithLeader(playerOrder, 0);
     Card.Suit trump = Card.Suit.HEARTS;
-    handPlayManager = new HandPlayManager(players, trump);
+    handPlayManager = new HandPlayManager(createDealer(), players, trump);
   }
 
   @Test
