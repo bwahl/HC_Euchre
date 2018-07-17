@@ -1,8 +1,6 @@
 import org.junit.Before;
 import org.junit.Test;
 
-import javax.rmi.CORBA.Stub;
-
 import static org.junit.Assert.*;
 
 public class DealerTest extends EuchreTest {
@@ -43,10 +41,10 @@ public class DealerTest extends EuchreTest {
     CardList deck = dealer.getDeck();
     dealer.deal(players, numCards);
     assertEquals("Deck is still size 24", 24, deck.size());
-    verifyHandsAllPlayers(numCards, deck);
+    verifyAllPlayersHands(numCards, deck);
   }
 
-  private void verifyHandsAllPlayers(int numCards, CardList deck) {
+  private void verifyAllPlayersHands(int numCards, CardList deck) {
     int playerNum = 0;
     for (Player player : players) {
       verifyPlayerHand(playerNum, numCards, deck, player.getHand());
