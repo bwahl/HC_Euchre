@@ -22,4 +22,8 @@ class PlayerOrderWithLeader implements Iterable<Player> {
     return playerOrder.createIterator(leader);
   }
 
+  public PlayerOrderWithLeader cloneWithNewLeader(Player newLeader) {
+    return new PlayerOrderWithLeader(playerOrder, newLeader);
+  }
+
 }
