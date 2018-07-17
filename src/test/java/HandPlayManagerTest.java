@@ -25,4 +25,26 @@ public class HandPlayManagerTest extends EuchreTest {
               tricksWon.get(player), new Integer(0));
     }
   }
+
+  @Test
+  public void testPlayHand() {
+    handPlayManager.playHand(5);
+    assertEquals("Total of five tricks won.", 5, countTricksWon());
+    verifyNoNegativeTricksWon();
+  }
+
+  private void verifyNoNegativeTricksWon() {
+    for (Player player : players) {
+      assertTrue("No players have won less than zero tricks.",
+              handPlayManager.getTricksWonBy(player) >= 0);
+    }
+  }
+
+  private int countTricksWon() {
+    int numWon = 0;
+    for (Player player : players) {
+      numWon += handPlayManager.getTricksWonBy(player);
+    }
+    return numWon;
+  }
 }
