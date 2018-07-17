@@ -6,6 +6,9 @@ import static org.junit.Assert.*;
 public class DealerTest extends EuchreTest {
 
   private PlayerOrderWithLeader players;
+  private int numCards;
+  private Dealer dealer;
+  private CardList origDeck;
 
   @Before
   public void setUp() throws Exception {
@@ -14,51 +17,40 @@ public class DealerTest extends EuchreTest {
 
   @Test
   public void TestDealOneCardHand() {
-    int cardNum;
-    CardList deck = new CardList(EuchreTest.TENS_CARD_ARRAY);
-    Dealer dealer = new Dealer(new CustomDeckFactory(deck));
-    dealer.deal(players, 1);
-    // The cards are dealt one at a time, starting from leader
-    cardNum = 0;
-    for (Player player : players) {
-      assertEquals("Each player has the correct card.",
-                   EuchreTest.TENS_CARD_ARRAY[cardNum],
-                   player.getHand().get(0)
-      );
-      cardNum += 1;
-    }
-    assertEquals("Dealer's deck should now be empty.",
-                 0,
-                  dealer.getDeck().size()
-    );
+    initializeDealerAndDeck(1);
+    dealer.deal(players, numCards);
+    verifyAllPlayersHands();
   }
 
   @Test
   public void testDealFiveCardHand() {
-    int numCards = 5;
-    DeckFactory shuffledDeckFactory = new ShuffledDeckFactory(new StandardDeckFactory());
-    Dealer dealer = new Dealer(shuffledDeckFactory);
-    CardList deck = dealer.getDeck();
+    initializeDealerAndDeck(5);
     dealer.deal(players, numCards);
-    assertEquals("Deck is still size 24", 24, deck.size());
-    verifyAllPlayersHands(numCards, deck);
+    verifyAllPlayersHands();
   }
 
-  private void verifyAllPlayersHands(int numCards, CardList deck) {
+  private void initializeDealerAndDeck(int numCards) {
+    this.numCards = numCards;
+    DeckFactory shuffledDeckFactory = new ShuffledDeckFactory(new StandardDeckFactory());
+    dealer = new Dealer(shuffledDeckFactory);
+    origDeck = dealer.getDeck();
+  }
+
+  private void verifyAllPlayersHands() {
     int playerNum = 0;
     for (Player player : players) {
-      verifyPlayerHand(playerNum, numCards, deck, player.getHand());
+      verifyPlayerHand(playerNum, player.getHand());
       playerNum += 1;
     }
   }
 
-  private void verifyPlayerHand(int playerNum, int numCards, CardList deck, CardList hand) {
-    assertEquals("Hand size should be 5.", numCards, hand.size());
+  private void verifyPlayerHand(int playerNum, CardList playerHand) {
+    assertEquals("Hand size should be 5.", numCards, playerHand.size());
     for (int i = 0; i < numCards; i++) {
       // The cards should be dealt one at a time, starting from leader
       assertContains("Player should have correct cards.",
-              hand,
-              deck.get(playerNum + i * 4));
+              playerHand,
+              origDeck.get(playerNum + i * 4));
     }
   }
 
