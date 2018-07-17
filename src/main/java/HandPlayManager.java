@@ -11,10 +11,10 @@ public class HandPlayManager {
     this.trump = trump;
     this.players = players;
     tricksWon = new HashMap<>();
-    setTricksWonToAllZeroes();
+    initializeTricksWon();
   }
 
-  private void setTricksWonToAllZeroes() {
+  private void initializeTricksWon() {
     for (Player player : players) {
       tricksWon.put(player, 0);
     }
