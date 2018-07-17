@@ -11,7 +11,7 @@ public class Dealer {
     return deck.clone();
   }
 
-  private void reset() {
+  public void reset() {
     deck = deckFactory.createDeck();
   }
 
