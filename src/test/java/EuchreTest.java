@@ -45,6 +45,11 @@ public class EuchreTest {
     return copy;
   }
 
+  protected Dealer createDealer() {
+    DeckFactory shuffledDeckFactory = new ShuffledDeckFactory(new StandardDeckFactory());
+    return new Dealer(shuffledDeckFactory);
+  }
+
   protected Trick getRandomTrick() {
     return new Trick(Card.Suit.HEARTS);
   }

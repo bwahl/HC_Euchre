@@ -31,9 +31,8 @@ public class DealerTest extends EuchreTest {
 
   private void initializeDealerAndDeck(int numCards) {
     this.numCards = numCards;
-    DeckFactory shuffledDeckFactory = new ShuffledDeckFactory(new StandardDeckFactory());
-    dealer = new Dealer(shuffledDeckFactory);
-    origDeck = dealer.getDeck();
+    this.dealer = createDealer();
+    origDeck = this.dealer.getDeck();
   }
 
   private void verifyAllPlayersHands() {
