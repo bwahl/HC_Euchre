@@ -1,7 +1,7 @@
 public abstract class EuchreEvent {
 
   public enum Topic {
-    ALL, NEW_GAME, NEW_HAND, CARDS_DEALT, CARD_PLAYED, TRICK_WON
+    NEW_GAME, NEW_HAND, CARDS_DEALT, CARD_PLAYED, TRICK_WON
   }
 
   abstract Topic getTopic();
