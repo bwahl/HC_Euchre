@@ -12,7 +12,7 @@ public abstract class EuchreEvent {
     return new CardPlayedEvent(card);
   }
 
-  static CardsDealtEvent makeCardDealtEvent(PlayerOrderWithLeader playerOrder) {
+  static CardsDealtEvent makeCardsDealtEvent(Iterable<Player> playerOrder) {
     return new CardsDealtEvent(playerOrder);
   }
 
@@ -37,9 +37,9 @@ public abstract class EuchreEvent {
 
   static class CardsDealtEvent extends EuchreEvent {
 
-    private final PlayerOrderWithLeader playerOrder;
+    private final Iterable<Player> playerOrder;
 
-    CardsDealtEvent(PlayerOrderWithLeader playerOrder) {
+    CardsDealtEvent(Iterable<Player> playerOrder) {
       this.playerOrder = playerOrder;
     }
 
