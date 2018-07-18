@@ -28,8 +28,13 @@ public class PlayedCard {
     return card.hasSameValue(other.card);
   }
 
+
   public boolean hasHigherValue(PlayedCard other) {
     return card.hasHigherValue(other.card);
   }
 
+  @Override
+  public String toString() {
+    return player.toString() + " played " + card.toString();
+  }
 }
