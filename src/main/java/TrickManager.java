@@ -60,6 +60,13 @@ public class TrickManager {
   private void makePlayerPlayCard(Player currentPlayer) {
     PlayedCard playedCard = currentPlayer.getPlayedCard(trick);
     trick.addPlayedCard(playedCard);
+    publishPlayedCard(playedCard);
+  }
+
+  private void publishPlayedCard(PlayedCard playedCard) {
+    EuchreEvent event = EuchreEvent.makeCardPlayedEvent(playedCard);
+    PubSub pubSub = PubSub.getInstance();
+    pubSub.publish(event);
   }
 
 }
