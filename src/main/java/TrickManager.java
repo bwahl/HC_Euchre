@@ -65,8 +65,7 @@ public class TrickManager {
 
   private void publishPlayedCard(PlayedCard playedCard) {
     EuchreEvent event = EuchreEvent.makeCardPlayedEvent(playedCard);
-    PubSub pubSub = PubSub.getInstance();
-    pubSub.publish(event);
+    PubSub.getInstance().publish(event);
   }
 
 }
